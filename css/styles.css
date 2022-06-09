@@ -19,7 +19,7 @@ body, h1 {
 }
 
 .question-holder{
-    height: 6rem;
+    height: 12rem;
     display: flex;
     text-align: center;
 }
@@ -48,4 +48,11 @@ body, h1 {
     box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
     transform: translateY(-0.1rem);
     transition: transform 200ms;
+}
+
+.correct {
+    background-color: lightgreen;
+}
+.incorrect {
+    background-color: lightpink;
 }

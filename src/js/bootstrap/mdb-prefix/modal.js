@@ -310,7 +310,7 @@ class Modal extends BaseComponent {
 
   _isAnimated() {
     return this._element.classList.contains(CLASS_NAME_FADE);
-  }
+  } 
 
   _triggerBackdropTransition() {
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
