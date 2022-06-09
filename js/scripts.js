@@ -234,8 +234,9 @@ const restart = document.getElementById("restart");
 
 let questionCounter;
 let score;
-const MAX_QUESTIONS = 5;
+const MAX_LEVEL = 5;
 let acceptingAnswers;
+let availableQuestions;
 
 const startGame = () => {
     questionCounter = 0;
@@ -243,16 +244,17 @@ const startGame = () => {
     acceptingAnswers = true;
     scoreText.innerText = score;
 
-    availableQuestions = getRandomQuestions(questions, MAX_QUESTIONS);
+    availableQuestions = getRandomQuestions(questions, MAX_LEVEL, questionCounter);
     getNewQuestion();
 };
 
-const getRandomQuestions = (arr, n) =>{
-    let len = arr.length;
+const getRandomQuestions = (arr, m, n) =>{
 
-    const shuffled = [...arr].sort(() => 0.5 - Math.random());
-    console.log(shuffled);
-    return (selected = shuffled.slice(0, n));
+   const questionsByLevel = [...arr].slice(m * n, m * n + 5);
+   console.log(questionsByLevel)
+    const shuffled = [...questionsByLevel].sort(() => 0.5 - Math.random());
+    console.log(shuffled[0]);
+    return  shuffled
 };
 
 const getNewQuestion = () => {
@@ -262,7 +264,7 @@ const getNewQuestion = () => {
     }
 
     questionCounter++;
-    questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
+    questionCounterText.innerText = `${questionCounter}/${MAX_LEVEL}`;
 
     currentQuestion = availableQuestions[0];
     question.innerText = currentQuestion.question;
@@ -293,12 +295,12 @@ const getNewQuestion = () => {
 
                 setTimeout (()=>{
                     clickedAnswer.parentElement.classList.remove(classToApply);
+                    availableQuestions = getRandomQuestions(questions, MAX_LEVEL, questionCounter );
                     getNewQuestion();
                     acceptingAnswers = true;
                 }, 1000)
             });
-    })
-    availableQuestions.shift();
+    });
  };
 
 displayResults = () => {
