@@ -25,11 +25,10 @@ function loadFromFile() {
          console.log("Ooops something went wrong")
       }
    }
-   return 
-   xhr.response;
+   return xhr.response;
 }
 
-let questions = JSON.parse(loadFromFile())
+let questions = JSON.parse(loadFromFile());
 const startGame = () => {
     questionCounter = 0;
     score = 0;
