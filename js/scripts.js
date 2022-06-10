@@ -104,7 +104,7 @@ displayResults = () => {
    const myModalEl = document.getElementById('myModal');
    const modal = new mdb.Modal(endGameModal);
    const modalBody = document.getElementById('modal-body');
-   modalBody.innerText = `Tu puntaje: ${score}`;
+   modalBody.innerText = `Your score: ${score}`;
    modal.show();
    acceptingAnswers = false;
 }
